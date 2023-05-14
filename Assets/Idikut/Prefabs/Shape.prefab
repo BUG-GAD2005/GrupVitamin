@@ -50,5 +50,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareShapeImage: {fileID: 4581374140421470654, guid: b4156036bc56eca4aaf170d555cb08ee, type: 3}
-  currentShapeData: {fileID: 11400000, guid: 4491a437b6cc25a419f2217c61a64c35, type: 2}
+  currentShapeData: {fileID: 11400000, guid: 925f962cba09be946ac5832f4d4f1424, type: 2}
   _currentShape: []

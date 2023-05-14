@@ -7,10 +7,6 @@ public class GridSquareScript : MonoBehaviour
 {
     public Image normalImage;
     public List<Sprite> normalImages;
-    void Start()
-    {
-        
-    }
 
     public void SetImage(bool SetFirstImage)
     {
