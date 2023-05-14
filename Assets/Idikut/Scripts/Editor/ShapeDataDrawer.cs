@@ -24,9 +24,11 @@ public class ShapeDataDrawer : Editor
             DrawBoardTable();
         }
         serializedObject.ApplyModifiedProperties();
-        if(GUI.changed)
-            EditorUtility.SetDirty(ShapeDataInstance);
 
+        if(GUI.changed)
+        {
+            EditorUtility.SetDirty(ShapeDataInstance);
+        }
     }
     private void ClearBoardButton()
     {

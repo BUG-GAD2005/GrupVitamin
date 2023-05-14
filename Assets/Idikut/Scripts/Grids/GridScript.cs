@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridScript : MonoBehaviour
 {
     public int columns = 10, rows = 10;
-    public float squareSize = 0.1f;
+    //public float squareSize = 0.1f;
     public float squareGap = 0.1f;
     public GameObject gridSquare;
     public Vector2 startPosition = new Vector2(0, 0);

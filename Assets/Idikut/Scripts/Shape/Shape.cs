@@ -6,7 +6,7 @@ public class Shape : MonoBehaviour
 {
     public GameObject squareShapeImage;
     public ShapeDataScript currentShapeData;
-       [HideInInspector]
+    [HideInInspector]
     public List<GameObject> _currentShape = new List<GameObject>();
     void Start()
     {
@@ -36,21 +36,20 @@ public class Shape : MonoBehaviour
 
         int currentIndexList = 0;
         //Set positions to form final shape
-        for(var row=0 ; row< shapeData.rows;row++)
+        for(var row = 0 ; row < shapeData.rows; row++)
         {
             for(var column=0; column< shapeData.columns; column++)
             {
                 if(shapeData.board[row].columns[column])
                 {
                     _currentShape[currentIndexList].SetActive(true);
-                     _currentShape[currentIndexList].GetComponent<RectTransform>().localPosition = new Vector2(GetXPositionForShapeSquare(shapeData, column, moveDistance), 
-                     GetYPositionForShapeSquare(shapeData, row, moveDistance));
+                    _currentShape[currentIndexList].GetComponent<RectTransform>().localPosition = new Vector2(GetXPositionForShapeSquare(shapeData, column, moveDistance),
+                    GetYPositionForShapeSquare(shapeData, row, moveDistance));
 
                     currentIndexList++;
                 }
             }
         }
-
     }
     private float GetYPositionForShapeSquare(ShapeDataScript shapeData, int row, Vector2 moveDistance)
     {
@@ -65,7 +64,7 @@ public class Shape : MonoBehaviour
                 if(row < middleSquareIndex)//move it on minus
                 {
                     shiftOnY = moveDistance.y;
-                    shiftOnY *= multiplier;
+                    shiftOnY *= -multiplier;
                 }
                 else if(row > middleSquareIndex)//move it on plus
                 {
@@ -117,7 +116,7 @@ public class Shape : MonoBehaviour
                 else if(column > middleSquareIndex)//move it on plus
                 {
                     shiftOnX = moveDistance.x;
-                    shiftOnX *= multiplier; 
+                    shiftOnX *= -multiplier; 
                 }
             }
             else
