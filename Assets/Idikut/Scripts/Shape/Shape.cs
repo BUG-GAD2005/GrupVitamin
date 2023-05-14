@@ -10,7 +10,7 @@ public class Shape : MonoBehaviour
     public List<GameObject> _currentShape = new List<GameObject>();
     void Start()
     {
-        RequestNewShape(currentShapeData);
+        //RequestNewShape(currentShapeData);
     }
 
     public void RequestNewShape(ShapeDataScript shapeData)

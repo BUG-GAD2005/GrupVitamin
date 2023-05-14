@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c303f3b6967399d4fb3faf30607b5cad, type: 3}
   m_Name: ShapeL
   m_EditorClassIdentifier: 
-  columns: 3
-  rows: 2
+  columns: 2
+  rows: 3
   board:
-  - columns: 010000
-  - columns: 010101
+  - columns: 0100
+  - columns: 0100
+  - columns: 0101
