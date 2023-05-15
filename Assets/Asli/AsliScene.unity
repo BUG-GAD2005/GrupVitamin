@@ -609,7 +609,7 @@ MonoBehaviour:
   gridSquare: {fileID: 614286376202406479, guid: 010462c6ac0bf9b45a30579b5188f64f, type: 3}
   startPosition: {x: -400, y: 400}
   squareScale: 1
-  everySquareScale: 1
+  everySquareScale: 0
 --- !u!224 &1243142909 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8648292340206393201, guid: 3160f7b190d97774384614c111f64177, type: 3}

@@ -68,5 +68,10 @@ public class ShapeMovement : MonoBehaviour
     void DropShape()
     {
         isDrag = false;
+
+        if (touchedShape != null)
+        {
+            if (touchedShape.GetComponent<Shape>().TryPlaceShape()) touchedShape = null;
+        }
     }
 }

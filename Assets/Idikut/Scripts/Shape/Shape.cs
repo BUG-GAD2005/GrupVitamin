@@ -1,16 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Shape : MonoBehaviour
 {
+    public bool isMovable { get; private set; } = true;
+
     public GameObject squareShapeImage;
     public ShapeDataScript currentShapeData;
-    [HideInInspector]
     public List<GameObject> _currentShape = new List<GameObject>();
     void Start()
     {
         //RequestNewShape(currentShapeData);
+    }
+
+    public bool TryPlaceShape()
+    {
+        Dictionary<GridSquareScript, ShapeSquare> occupyingDictionary = new Dictionary<GridSquareScript, ShapeSquare>();
+
+        foreach(GameObject shapeSquare in _currentShape)
+        {
+            if(shapeSquare.TryGetComponent(out ShapeSquare ss) == false)
+            {
+                return false;
+            }
+
+            if(ss.CheckForGridSquareToOccupy(out GridSquareScript gss) == false)
+            {
+                return false;
+            }
+
+            occupyingDictionary.Add(gss, ss);
+        }
+
+        for (int i = 0; i < occupyingDictionary.Count; i++)
+        {
+            GridSquareScript gss = occupyingDictionary.ElementAt(i).Key;
+            ShapeSquare ss = occupyingDictionary.ElementAt(i).Value;
+
+            gss.Occupy();
+            ss.transform.SetParent(gss.transform);
+            ss.transform.localPosition = Vector2.zero;
+        }
+
+        Destroy(gameObject);
+        return true;
     }
 
     public void RequestNewShape(ShapeDataScript shapeData)
@@ -147,7 +182,6 @@ public class Shape : MonoBehaviour
         }
         return shiftOnX;
     }
-
     private int GetNumberOfSquares(ShapeDataScript shapeData)
     {
         int number = 0;
