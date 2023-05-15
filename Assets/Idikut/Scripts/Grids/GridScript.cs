@@ -20,6 +20,11 @@ public class GridScript : MonoBehaviour
         CreateGrid();
     }
 
+    public void CheckMatches()
+    {
+
+    }
+
     private void CreateGrid()
     {
         SpawnGridSquares();

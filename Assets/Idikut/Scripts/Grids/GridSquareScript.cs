@@ -23,6 +23,8 @@ public class GridSquareScript : MonoBehaviour
     {
         if (isOccupied) return;
 
+        //ADD +1 SCORE
+
         //transformToOccupyWith.parent = transform;
         //transformToOccupyWith.localPosition = Vector3.zero;
 
