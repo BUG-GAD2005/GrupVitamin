@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
+    public static ScoreManager instance = null;
     public int Score { get; private set; }
+
+    [SerializeField] TextMeshProUGUI ScoreText;
 
     void Awake()
     {
@@ -17,6 +20,8 @@ public class ScoreManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        RefreshScoreText();
     }
 
     public void AddScore(int amount)
@@ -24,5 +29,12 @@ public class ScoreManager : MonoBehaviour
         if (amount <= 0) return;
 
         Score += amount;
+        RefreshScoreText();
+    }
+    void RefreshScoreText()
+    {
+        if (ScoreText == null) return;
+
+        ScoreText.text = "SCORE : " + Score;
     }
 }
