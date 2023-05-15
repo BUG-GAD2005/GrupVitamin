@@ -14,15 +14,83 @@ public class GridScript : MonoBehaviour
 
     private Vector2 offset = new Vector2(0, 0);
     private List<GameObject> gridSquares = new List<GameObject>();
+    private List<GridSquareScript> gridSquareScripts = new List<GridSquareScript>();
 
     void Start()
     {
         CreateGrid();
     }
 
-    public void CheckMatches()
+    public void UnoccupyAll()
     {
+        foreach(GridSquareScript gss in gridSquareScripts)
+        {
+            gss.Unoccupy();
+        }
+    }
 
+    public void CheckForMatches()
+    {
+        List<GridSquareScript> matchedGridSquares = new List<GridSquareScript>();
+        bool batchIsOk = true;
+        int scoreToAdd = 0;
+
+        //check for rows
+        for (int i = 0; i < rows; i++)
+        {
+            foreach (GridSquareScript script in GetRowAsScript(i))
+            {
+                if (script.isOccupied == false)
+                {
+                    batchIsOk = false;
+                    break;
+                }
+            }
+
+            if (batchIsOk)
+            {
+                foreach (GridSquareScript script in GetRowAsScript(i))
+                {
+                    matchedGridSquares.Add(script);
+                }
+
+                scoreToAdd += 10;
+            }
+
+            batchIsOk = true;
+        }
+
+        batchIsOk = true;
+        //check for columns
+        for (int i = 0; i < columns; i++)
+        {
+            foreach (GridSquareScript script in GetColumnAsScript(i))
+            {
+                if (script.isOccupied == false)
+                {
+                    batchIsOk = false;
+                    break;
+                }
+            }
+
+            if (batchIsOk)
+            {
+                foreach (GridSquareScript script in GetColumnAsScript(i))
+                {
+                    matchedGridSquares.Add(script);
+                }
+
+                scoreToAdd += 10;
+            }
+
+            batchIsOk = true;
+        }
+
+        for (int i = 0; i < matchedGridSquares.Count; i++)
+        {
+            matchedGridSquares[i].Unoccupy();
+        }
+        ScoreManager.instance.AddScore(scoreToAdd);
     }
 
     void CreateGrid()
@@ -38,6 +106,9 @@ public class GridScript : MonoBehaviour
             for (int row = 0; row < columns; row++)
             {
                 gridSquares.Add(Instantiate(gridSquare) as GameObject);
+                gridSquareScripts.Add(gridSquares[gridSquares.Count - 1].GetComponent<GridSquareScript>());
+
+                gridSquareScripts[gridSquares.Count - 1].ParentGridScript = this;
                 gridSquares[gridSquares.Count - 1].transform.SetParent(this.transform);
                 gridSquares[gridSquares.Count - 1].transform.localScale = new Vector3(squareScale, squareScale, squareScale);
                 //gridSquares[gridSquares.Count - 1].GetComponent<GridSquareScript>().SetImage(squareIndex % 2 == 0);
@@ -108,5 +179,33 @@ public class GridScript : MonoBehaviour
         }
 
         return GOsToReturn;
+    }
+    GridSquareScript[] GetColumnAsScript(int index)
+    {
+        if (gridSquares.Count <= 0) return null;
+        if (index >= columns) return null;
+
+        GridSquareScript[] ScriptsToReturn = new GridSquareScript[rows];
+
+        for (int i = 0; i < rows; i++)
+        {
+            ScriptsToReturn[i] = gridSquareScripts[index + i * columns];
+        }
+
+        return ScriptsToReturn;
+    }
+    GridSquareScript[] GetRowAsScript(int index)
+    {
+        if (gridSquares.Count <= 0) return null;
+        if (index >= rows) return null;
+
+        GridSquareScript[] ScriptsToReturn = new GridSquareScript[columns];
+
+        for (int i = 0; i < columns; i++)
+        {
+            ScriptsToReturn[i] = gridSquareScripts[index * columns + i];
+        }
+
+        return ScriptsToReturn;
     }
 }

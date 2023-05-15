@@ -17,7 +17,8 @@ public class Shape : MonoBehaviour
 
     public bool TryPlaceShape()
     {
-        Dictionary<GridSquareScript, ShapeSquare> occupyingDictionary = new Dictionary<GridSquareScript, ShapeSquare>();
+        List<GridSquareScript> gridSquareScripts = new List<GridSquareScript>();
+        List<ShapeSquare> shapeSquares = new List<ShapeSquare>();
 
         foreach(GameObject shapeSquare in _currentShape)
         {
@@ -31,17 +32,21 @@ public class Shape : MonoBehaviour
                 return false;
             }
 
-            occupyingDictionary.Add(gss, ss);
+            gridSquareScripts.Add(gss);
+            shapeSquares.Add(ss);
         }
 
-        for (int i = 0; i < occupyingDictionary.Count; i++)
+        for (int i = 0; i < gridSquareScripts.Count; i++)
         {
-            GridSquareScript gss = occupyingDictionary.ElementAt(i).Key;
-            ShapeSquare ss = occupyingDictionary.ElementAt(i).Value;
+            GridSquareScript gss = gridSquareScripts[i];
+            ShapeSquare ss = shapeSquares[i];
 
-            gss.Occupy();
-            ss.transform.SetParent(gss.transform);
-            ss.transform.localPosition = Vector2.zero;
+            gss.Occupy(ss.transform);
+        }
+
+        if(gridSquareScripts.Count > 0)
+        {
+            gridSquareScripts[0].ParentGridScript.CheckForMatches();
         }
 
         Destroy(gameObject);
