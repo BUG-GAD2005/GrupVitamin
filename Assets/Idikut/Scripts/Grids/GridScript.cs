@@ -25,33 +25,32 @@ public class GridScript : MonoBehaviour
 
     }
 
-    private void CreateGrid()
+    void CreateGrid()
     {
         SpawnGridSquares();
         SetGridSquaresPosition();
     }
-
-    private void SpawnGridSquares()
+    void SpawnGridSquares()
     {
         int squareIndex = 0;
-        for (int row = 0; row < rows; row++)
+        for (int column = 0; column < rows; column++)
         {
-            for (int column = 0; column < columns; column++)
+            for (int row = 0; row < columns; row++)
             {
                 gridSquares.Add(Instantiate(gridSquare) as GameObject);
                 gridSquares[gridSquares.Count - 1].transform.SetParent(this.transform);
                 gridSquares[gridSquares.Count - 1].transform.localScale = new Vector3(squareScale, squareScale, squareScale);
-                gridSquares[gridSquares.Count - 1].GetComponent<GridSquareScript>().SetImage(squareIndex % 2 == 0);
+                //gridSquares[gridSquares.Count - 1].GetComponent<GridSquareScript>().SetImage(squareIndex % 2 == 0);
+                gridSquares[gridSquares.Count - 1].name = (column * columns + row + 1).ToString();
                 squareIndex++;
             }
         }
     }
-
-    private void SetGridSquaresPosition()
+    void SetGridSquaresPosition()
     {
         int columnNumber = 0;
         int rowNumber = 0;
-        bool reverseDirection = false;
+        //bool reverseDirection = false;
         
         var squareRect = gridSquares[0].GetComponent<RectTransform>().rect;
         offset.x = squareRect.width * squareScale + everySquareScale;
@@ -63,21 +62,51 @@ public class GridScript : MonoBehaviour
             {
                 columnNumber = 0;
                 rowNumber++;
-                reverseDirection = !reverseDirection;
+                //reverseDirection = !reverseDirection;
             }
 
             var xPos = offset.x * columnNumber + (columnNumber * squareGap);
             var yPos = offset.y * rowNumber + (rowNumber * squareGap);
 
-            if (reverseDirection)
-            {
-                xPos = offset.x * (columns - 1 - columnNumber) + ((columns - 1 - columnNumber) * squareGap);
-            }
+            //if (reverseDirection)
+            //{
+            //    xPos = offset.x * (columns - 1 - columnNumber) + ((columns - 1 - columnNumber) * squareGap);
+            //}
 
             square.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPosition.x + xPos, startPosition.y - yPos);
             square.GetComponent<RectTransform>().localPosition = new Vector3(startPosition.x + xPos, startPosition.y - yPos, 0f);
 
+            square.GetComponent<GridSquareScript>().SetImage(rowNumber % 2 == 1 ^ columnNumber % 2 == 1);
+
             columnNumber++;
         }
+    }
+    GameObject[] GetColumn(int index)
+    {
+        if (gridSquares.Count <= 0) return null;
+        if (index >= columns) return null;
+
+        GameObject[] GOsToReturn = new GameObject[rows];
+
+        for(int i = 0; i < rows; i++)
+        {
+            GOsToReturn[i] = gridSquares[index + i * columns];
+        }
+
+        return GOsToReturn;
+    }
+    GameObject[] GetRow(int index)
+    {
+        if (gridSquares.Count <= 0) return null;
+        if (index >= rows) return null;
+
+        GameObject[] GOsToReturn = new GameObject[columns];
+
+        for (int i = 0; i < columns; i++)
+        {
+            GOsToReturn[i] = gridSquares[index * columns + i];
+        }
+
+        return GOsToReturn;
     }
 }
