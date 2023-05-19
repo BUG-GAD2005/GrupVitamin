@@ -9,6 +9,7 @@ public class ShapeMovement : MonoBehaviour
 
     GameObject touchedShape;
     Vector3 touchedShapePos;
+    Vector3 touchedShapeDefaultPos;
     Touch touch;
 
     void Update()
@@ -52,6 +53,7 @@ public class ShapeMovement : MonoBehaviour
             isDrag = true;
             touchedShape = hit.collider.gameObject;
             touchedShapePos = touchedShape.transform.position;
+            touchedShapeDefaultPos = touchedShapePos;
         }
     }
 
@@ -71,7 +73,16 @@ public class ShapeMovement : MonoBehaviour
 
         if (touchedShape != null)
         {
-            if (touchedShape.GetComponent<Shape>().TryPlaceShape()) touchedShape = null;
+            if (touchedShape.GetComponent<Shape>().TryPlaceShape())
+            {
+                touchedShape = null;                
+            }
+            else
+            {
+                touchedShape.transform.position = touchedShapeDefaultPos;
+            }
         }
     }
+
+    
 }

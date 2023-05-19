@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Shape : MonoBehaviour
 {
@@ -10,10 +11,6 @@ public class Shape : MonoBehaviour
     public GameObject squareShapeImage;
     public ShapeDataScript currentShapeData;
     public List<GameObject> _currentShape = new List<GameObject>();
-    void Start()
-    {
-        //RequestNewShape(currentShapeData);
-    }
 
     public bool TryPlaceShape()
     {
@@ -50,8 +47,13 @@ public class Shape : MonoBehaviour
         }
 
         Destroy(gameObject);
+
+
         return true;
+        
     }
+
+    
 
     public void RequestNewShape(ShapeDataScript shapeData)
     {
