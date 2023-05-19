@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Utku/MainMenuScene.unity
+    guid: 770f2aa7d3c38ff469094b6dd62ed21a
+  - enabled: 1
+    path: Assets/Kayra/KayraScene.unity
+    guid: d1cea0a14af9d9045b51309d8266ad85
+  - enabled: 1
+    path: Assets/Utku/GameOverScreen.unity
+    guid: 03f3c15c2e39da841b9c6143e7d1b64c
   m_configObjects: {}
