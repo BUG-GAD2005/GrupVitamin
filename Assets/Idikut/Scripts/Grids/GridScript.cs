@@ -13,8 +13,12 @@ public class GridScript : MonoBehaviour
     public float everySquareScale = 0.0f;
 
     private Vector2 offset = new Vector2(0, 0);
-    private List<GameObject> gridSquares = new List<GameObject>();
-    private List<GridSquareScript> gridSquareScripts = new List<GridSquareScript>();
+
+    public List<GameObject> GridSquares => _gridSquares;
+    private List<GameObject> _gridSquares = new List<GameObject>();
+
+    public List<GridSquareScript> GridSquareScripts => _gridSquareScripts;
+    private List<GridSquareScript> _gridSquareScripts = new List<GridSquareScript>();
 
     void Start()
     {
@@ -23,7 +27,7 @@ public class GridScript : MonoBehaviour
 
     public void UnoccupyAll()
     {
-        foreach(GridSquareScript gss in gridSquareScripts)
+        foreach(GridSquareScript gss in _gridSquareScripts)
         {
             gss.Unoccupy();
         }
@@ -105,14 +109,14 @@ public class GridScript : MonoBehaviour
         {
             for (int row = 0; row < columns; row++)
             {
-                gridSquares.Add(Instantiate(gridSquare) as GameObject);
-                gridSquareScripts.Add(gridSquares[gridSquares.Count - 1].GetComponent<GridSquareScript>());
+                _gridSquares.Add(Instantiate(gridSquare) as GameObject);
+                _gridSquareScripts.Add(_gridSquares[_gridSquares.Count - 1].GetComponent<GridSquareScript>());
 
-                gridSquareScripts[gridSquares.Count - 1].ParentGridScript = this;
-                gridSquares[gridSquares.Count - 1].transform.SetParent(this.transform);
-                gridSquares[gridSquares.Count - 1].transform.localScale = new Vector3(squareScale, squareScale, squareScale);
+                _gridSquareScripts[_gridSquares.Count - 1].ParentGridScript = this;
+                _gridSquares[_gridSquares.Count - 1].transform.SetParent(this.transform);
+                _gridSquares[_gridSquares.Count - 1].transform.localScale = new Vector3(squareScale, squareScale, squareScale);
                 //gridSquares[gridSquares.Count - 1].GetComponent<GridSquareScript>().SetImage(squareIndex % 2 == 0);
-                gridSquares[gridSquares.Count - 1].name = (column * columns + row + 1).ToString();
+                _gridSquares[_gridSquares.Count - 1].name = (column * columns + row + 1).ToString();
                 squareIndex++;
             }
         }
@@ -123,11 +127,11 @@ public class GridScript : MonoBehaviour
         int rowNumber = 0;
         //bool reverseDirection = false;
         
-        var squareRect = gridSquares[0].GetComponent<RectTransform>().rect;
+        var squareRect = _gridSquares[0].GetComponent<RectTransform>().rect;
         offset.x = squareRect.width * squareScale + everySquareScale;
         offset.y = squareRect.height * squareScale + everySquareScale;
 
-        foreach (GameObject square in gridSquares)
+        foreach (GameObject square in _gridSquares)
         {
             if (columnNumber >= columns)
             {
@@ -154,56 +158,56 @@ public class GridScript : MonoBehaviour
     }
     GameObject[] GetColumn(int index)
     {
-        if (gridSquares.Count <= 0) return null;
+        if (_gridSquares.Count <= 0) return null;
         if (index >= columns) return null;
 
         GameObject[] GOsToReturn = new GameObject[rows];
 
         for(int i = 0; i < rows; i++)
         {
-            GOsToReturn[i] = gridSquares[index + i * columns];
+            GOsToReturn[i] = _gridSquares[index + i * columns];
         }
 
         return GOsToReturn;
     }
     GameObject[] GetRow(int index)
     {
-        if (gridSquares.Count <= 0) return null;
+        if (_gridSquares.Count <= 0) return null;
         if (index >= rows) return null;
 
         GameObject[] GOsToReturn = new GameObject[columns];
 
         for (int i = 0; i < columns; i++)
         {
-            GOsToReturn[i] = gridSquares[index * columns + i];
+            GOsToReturn[i] = _gridSquares[index * columns + i];
         }
 
         return GOsToReturn;
     }
     GridSquareScript[] GetColumnAsScript(int index)
     {
-        if (gridSquares.Count <= 0) return null;
+        if (_gridSquares.Count <= 0) return null;
         if (index >= columns) return null;
 
         GridSquareScript[] ScriptsToReturn = new GridSquareScript[rows];
 
         for (int i = 0; i < rows; i++)
         {
-            ScriptsToReturn[i] = gridSquareScripts[index + i * columns];
+            ScriptsToReturn[i] = _gridSquareScripts[index + i * columns];
         }
 
         return ScriptsToReturn;
     }
     GridSquareScript[] GetRowAsScript(int index)
     {
-        if (gridSquares.Count <= 0) return null;
+        if (_gridSquares.Count <= 0) return null;
         if (index >= rows) return null;
 
         GridSquareScript[] ScriptsToReturn = new GridSquareScript[columns];
 
         for (int i = 0; i < columns; i++)
         {
-            ScriptsToReturn[i] = gridSquareScripts[index * columns + i];
+            ScriptsToReturn[i] = _gridSquareScripts[index * columns + i];
         }
 
         return ScriptsToReturn;
