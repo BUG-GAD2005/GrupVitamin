@@ -156,7 +156,7 @@ public class GridScript : MonoBehaviour
             columnNumber++;
         }
     }
-    GameObject[] GetColumn(int index)
+    public GameObject[] GetColumn(int index)
     {
         if (_gridSquares.Count <= 0) return null;
         if (index >= columns) return null;
@@ -170,7 +170,7 @@ public class GridScript : MonoBehaviour
 
         return GOsToReturn;
     }
-    GameObject[] GetRow(int index)
+    public GameObject[] GetRow(int index)
     {
         if (_gridSquares.Count <= 0) return null;
         if (index >= rows) return null;
@@ -184,7 +184,7 @@ public class GridScript : MonoBehaviour
 
         return GOsToReturn;
     }
-    GridSquareScript[] GetColumnAsScript(int index)
+    public GridSquareScript[] GetColumnAsScript(int index)
     {
         if (_gridSquares.Count <= 0) return null;
         if (index >= columns) return null;
@@ -198,7 +198,7 @@ public class GridScript : MonoBehaviour
 
         return ScriptsToReturn;
     }
-    GridSquareScript[] GetRowAsScript(int index)
+    public GridSquareScript[] GetRowAsScript(int index)
     {
         if (_gridSquares.Count <= 0) return null;
         if (index >= rows) return null;
