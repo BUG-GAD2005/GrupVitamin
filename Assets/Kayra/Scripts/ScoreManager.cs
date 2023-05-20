@@ -6,6 +6,8 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance = null;
+
+    public BoostManager boostManager;
     public int Score { get; private set; }
 
     [SerializeField] TextMeshProUGUI ScoreText;
@@ -30,6 +32,8 @@ public class ScoreManager : MonoBehaviour
 
         Score += amount;
         RefreshScoreText();
+
+        boostManager.GiveBoostToPlayer();
     }
     void RefreshScoreText()
     {
