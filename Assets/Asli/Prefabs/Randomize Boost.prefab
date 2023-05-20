@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7186001397311393854}
   - component: {fileID: 4135756744005433252}
   - component: {fileID: 2178396089295221098}
+  - component: {fileID: 4665806611748741102}
   m_Layer: 5
   m_Name: Randomize Boost
   m_TagString: Untagged
@@ -120,4 +121,28 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4135756744005433252}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4665806611748741102}
+        m_TargetAssemblyTypeName: RandomizeBoost, Assembly-CSharp
+        m_MethodName: RandomizeShapesAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4665806611748741102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2573584336405751477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c0080f32f56904c9ed4e6a2d0fd9f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

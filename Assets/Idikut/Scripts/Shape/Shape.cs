@@ -51,9 +51,7 @@ public class Shape : MonoBehaviour
 
         return true;
         
-    }
-
-    
+    } 
 
     public void RequestNewShape(ShapeDataScript shapeData)
     {

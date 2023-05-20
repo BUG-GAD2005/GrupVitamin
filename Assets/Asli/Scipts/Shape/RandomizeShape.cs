@@ -31,7 +31,8 @@ public class RandomizeShape : MonoBehaviour
             {
                 Instantiate(shapePrefab, shapeHolder.transform);
             }
-            GetRandomShapeIndex();
+            GetShapesOnScene();
+            GetRandomShapeIndex(shapesList);
         }
     }
 
@@ -58,9 +59,9 @@ public class RandomizeShape : MonoBehaviour
         }
     }
 
-    public void GetRandomShapeIndex()
+    public void GetRandomShapeIndex(List<Shape> shapesList)
     {
-        GetShapesOnScene();
+        //GetShapesOnScene();
 
         foreach (var shape in shapesList)
         {
