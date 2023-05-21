@@ -26,8 +26,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void CheckGameOverForButtons() {
-        textMeshOutput.text = CheckGameOver().ToString();
+    public void CheckGameOverForButtons() 
+    {
+        string temp = CheckGameOver().ToString();
+        textMeshOutput.text += temp;
     }
     public bool CheckGameOver()
     {
@@ -42,8 +44,19 @@ public class GameManager : MonoBehaviour
             gridSquareScriptGrid.Add(gridScriptInScene.GetRowAsScript(row));
         }
 
+        textMeshOutput.text = "";
         foreach (Shape shape in shapesInScene)
         {
+            foreach(ShapeDataScript.Row row in shape.currentShapeData.board)
+            {
+                foreach(bool boolValue in row.columns)
+                {
+                    textMeshOutput.text += boolValue ? "[]" : "x";
+                }
+                textMeshOutput.text += "<br>";
+            }
+            textMeshOutput.text += "<br>";
+
             shapeRowsInScene.Add(shape.currentShapeData.board);
         }
 
