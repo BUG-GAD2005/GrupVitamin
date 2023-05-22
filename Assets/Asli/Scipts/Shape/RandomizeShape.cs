@@ -16,28 +16,30 @@ public class RandomizeShape : MonoBehaviour
     {
         shapeHolder = GameObject.Find("Shape Holder");
         AddShapesToList();
+        InstantiateShapePrefab(3);
     }
 
     private void Update()
     {
-        InstantiateShapePrefab();
+        
     }
 
-    public void InstantiateShapePrefab()
+    public void InstantiateShapePrefab(int shapeCount)
     {
         if (!IsThereAnyShape())
         {
-            for (int i = 0; i < 3; i++)
-            {
-                Instantiate(shapePrefab, shapeHolder.transform);
-            }
-            GetShapesOnScene();
-            GetRandomShapeIndex(shapesList);
-
-            GameManager.instance?.CheckGameOver();
+            
         }
-    }
 
+        for (int i = 0; i < shapeCount; i++)
+        {
+            Instantiate(shapePrefab, shapeHolder.transform);
+        }
+        GetShapesOnScene();
+        GetRandomShapeIndex(shapesList);
+
+        GameManager.instance?.CheckGameOver();
+    }
     
     void AddShapesToList()
     {
@@ -63,8 +65,6 @@ public class RandomizeShape : MonoBehaviour
 
     public void GetRandomShapeIndex(List<Shape> shapesList)
     {
-        //GetShapesOnScene();
-
         foreach (var shape in shapesList)
         {
             var randomShapeIndex = Random.Range(0, shapeDataScriptsList.Count);
@@ -83,4 +83,5 @@ public class RandomizeShape : MonoBehaviour
             return false;
         }
     }
+
 }
