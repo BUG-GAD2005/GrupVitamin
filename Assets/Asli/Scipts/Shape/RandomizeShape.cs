@@ -16,21 +16,11 @@ public class RandomizeShape : MonoBehaviour
     {
         shapeHolder = GameObject.Find("Shape Holder");
         AddShapesToList();
-        InstantiateShapePrefab(3);
-    }
-
-    private void Update()
-    {
-        
+        StartCoroutine(ShapeSpawnerWithCheck());
     }
 
     public void InstantiateShapePrefab(int shapeCount)
     {
-        if (!IsThereAnyShape())
-        {
-            
-        }
-
         for (int i = 0; i < shapeCount; i++)
         {
             Instantiate(shapePrefab, shapeHolder.transform);
@@ -84,4 +74,14 @@ public class RandomizeShape : MonoBehaviour
         }
     }
 
+    IEnumerator ShapeSpawnerWithCheck()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        if (!IsThereAnyShape())
+        {
+            InstantiateShapePrefab(3);
+        }
+        StartCoroutine(ShapeSpawnerWithCheck());
+    }
 }
