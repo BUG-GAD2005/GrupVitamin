@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c303f3b6967399d4fb3faf30607b5cad, type: 3}
   m_Name: ShapeReverseL
   m_EditorClassIdentifier: 
-  columns: 2
-  rows: 3
+  columns: 3
+  rows: 2
   board:
-  - columns: 0001
-  - columns: 0001
-  - columns: 0101
+  - columns: 000001
+  - columns: 010101
