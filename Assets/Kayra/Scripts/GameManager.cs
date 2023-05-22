@@ -118,7 +118,6 @@ public class GameManager : MonoBehaviour
         GameIsOver();
         return true;
     }
-
     void GameIsOver()
     {
             textMeshOutput.text = "GAME OVER";
