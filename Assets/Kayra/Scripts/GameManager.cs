@@ -35,83 +35,87 @@ public class GameManager : MonoBehaviour
     {
         Shape[] shapesInScene = FindObjectsByType<Shape>(FindObjectsSortMode.None);
         List<ShapeDataScript.Row[]> shapeRowsInScene = new List<ShapeDataScript.Row[]>();
-        List<GridSquareScript> gridSquareScripts = gridScriptInScene.GridSquareScripts;
 
-        List<GridSquareScript[]> gridSquareScriptGrid = new List<GridSquareScript[]>();
+        List<GridSquareScript[]> GSSGrid = new List<GridSquareScript[]>();
 
         for (int row = 0; row < gridScriptInScene.rows; row++)
         {
-            gridSquareScriptGrid.Add(gridScriptInScene.GetRowAsScript(row));
+            GSSGrid.Add(gridScriptInScene.GetRowAsScript(row));
         }
 
+        //debug the rows
         textMeshOutput.text = "";
         foreach (Shape shape in shapesInScene)
         {
-            foreach(ShapeDataScript.Row row in shape.currentShapeData.board)
+            foreach (ShapeDataScript.Row r in shape.currentShapeData.board)
             {
-                foreach(bool boolValue in row.columns)
+                foreach (bool b in r.columns)
                 {
-                    textMeshOutput.text += boolValue ? "[]" : "x";
+                    textMeshOutput.text += b ? "[]" : "x";
                 }
                 textMeshOutput.text += "<br>";
             }
             textMeshOutput.text += "<br>";
-
-            shapeRowsInScene.Add(shape.currentShapeData.board);
         }
 
-        for (int gridY = 0; gridY < gridSquareScriptGrid.Count; gridY++)
+        //for every shape in the scene
+        foreach (Shape shape in shapesInScene)
         {
-            for (int gridX = 0; gridX < gridSquareScriptGrid[gridY].Length; gridX++)
-            {
-                //GridSquareScript currentGSS = gridSquareScriptGrid[gridY][gridX];
+            //rows of the shape
+            ShapeDataScript.Row[] rows = shape.currentShapeData.board;
 
-                foreach (ShapeDataScript.Row[] shapeRows in shapeRowsInScene)
+
+            //for every gridSquare in grid
+            for (int gridY = 0; gridY < GSSGrid.Count; gridY++){
+                for (int gridX = 0; gridX < GSSGrid[gridY].Length; gridX++)
                 {
-                    bool shapeFailed = false;
+                    bool gridFailed = false;
 
-                    //rows of board
-                    for (int rowY = 0; rowY < shapeRows.Length; rowY++)
+
+                    //for every bool in shape's shapeData --Y--
+                    for (int shapeY = 0; shapeY < rows.Length; shapeY++)
                     {
-                        //Y out of range
-                        if (gridY + rowY >= gridScriptInScene.rows)
+                        //OUT OF RANGE Y
+                        if (gridY + shapeY >= GSSGrid.Count)
                         {
-                            shapeFailed = true;
+                            gridFailed = true;
                             break;
                         }
 
-                        //columns of board[y]
-                        for (int rowX = 0; rowX < shapeRows[rowY].columns.Length; rowX++)
+                        //for every bool in shape's shapeData --X--
+                        for (int shapeX = 0; shapeX < rows[shapeY].columns.Length; shapeX++)
                         {
-                            //X out of range
-                            if (gridX + rowX >= gridScriptInScene.columns)
+
+                            //OUT OF RANGE X
+                            if(gridX + shapeX >= GSSGrid[gridY+shapeY].Length)
                             {
-                                shapeFailed = true;
+                                gridFailed = true;
                                 break;
                             }
-                            //Shape data is false, we do not have to check here
-                            if (shapeRows[rowY].columns[rowX] == false)
+
+                            //We do not have to check here
+                            if(rows[shapeY].columns[shapeX] == false)
                             {
-                                break;
+                                continue;
                             }
-                            //grid square is occupied
-                            if (gridSquareScriptGrid[gridY + rowY][gridX + rowX].isOccupied)
+
+                            //Here is occupied
+                            if (GSSGrid[gridY + shapeY][gridX + shapeX].isOccupied)
                             {
-                                shapeFailed = true;
+                                gridFailed = true;
                                 break;
                             }
                         }
 
-                        if (shapeFailed) break;
+                        if (gridFailed) break;
                     }
 
-                    if (shapeFailed == false)
-                    {
-                        return false;
-                    }
+
+                    if (gridFailed == false) return false;
                 }
             }
         }
+
         return true;
     }
 }
