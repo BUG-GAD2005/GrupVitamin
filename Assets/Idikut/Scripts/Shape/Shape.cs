@@ -48,9 +48,9 @@ public class Shape : MonoBehaviour
 
         Destroy(gameObject);
 
+        GameManager.instance?.CheckGameOver();
 
         return true;
-        
     } 
 
     public void RequestNewShape(ShapeDataScript shapeData)

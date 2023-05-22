@@ -33,6 +33,8 @@ public class RandomizeShape : MonoBehaviour
             }
             GetShapesOnScene();
             GetRandomShapeIndex(shapesList);
+
+            GameManager.instance?.CheckGameOver();
         }
     }
 

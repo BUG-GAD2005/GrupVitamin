@@ -26,11 +26,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void CheckGameOverForButtons() 
-    {
-        string temp = CheckGameOver().ToString();
-        textMeshOutput.text += temp;
-    }
+    public void CheckGameOverForButtons() => CheckGameOver();
     public bool CheckGameOver()
     {
         Shape[] shapesInScene = FindObjectsByType<Shape>(FindObjectsSortMode.None);
@@ -44,18 +40,21 @@ public class GameManager : MonoBehaviour
         }
 
         //debug the rows
-        textMeshOutput.text = "";
-        foreach (Shape shape in shapesInScene)
+        if (textMeshOutput != null)
         {
-            foreach (ShapeDataScript.Row r in shape.currentShapeData.board)
+            textMeshOutput.text = "";
+            foreach (Shape shape in shapesInScene)
             {
-                foreach (bool b in r.columns)
+                foreach (ShapeDataScript.Row r in shape.currentShapeData.board)
                 {
-                    textMeshOutput.text += b ? "[]" : "x";
+                    foreach (bool b in r.columns)
+                    {
+                        textMeshOutput.text += b ? "[]" : "x";
+                    }
+                    textMeshOutput.text += "<br>";
                 }
                 textMeshOutput.text += "<br>";
-            }
-            textMeshOutput.text += "<br>";
+            } 
         }
 
         //for every shape in the scene
@@ -116,6 +115,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        GameIsOver();
         return true;
+    }
+
+    void GameIsOver()
+    {
+            textMeshOutput.text = "GAME OVER";
     }
 }
