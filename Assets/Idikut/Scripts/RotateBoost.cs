@@ -5,47 +5,62 @@ using UnityEngine;
 public class RotateBoost : MonoBehaviour
 {
     //int rotateCount = GameManager.instance.rotationRate;
-    int rotateCount = 0;
+    public int rotateCount = 0;
+    bool doOnce = true;
 
     void Start()
     {
-        rotateCount = GameManager.instance.rotationRate;
+        //rotateCount = GameManager.instance.rotationRate;
+       
     }
-
-    public void Rotate()
+    public void buttonRotate()
     {
-        RotateCounter();       
-        RotateParent();
-        RotateChilds();       
+        Rotate(90,true);
+    }
+    public void Rotate(int rotationDegree, bool isCounter)
+    {
+        RotateCounter(true);       
+        RotateParent(rotationDegree);
+        RotateChilds(rotationDegree);       
         GameManager.instance?.CheckGameOver();
     }
-    void RotateParent()
+    void RotateParent(int RotationDegree)
     {
         GameObject[] shapes = GameObject.FindGameObjectsWithTag("Shape");
         foreach (GameObject shape in shapes)
         {
-            shape.transform.Rotate(0, 0, -90);
+            shape.transform.Rotate(0, 0, -RotationDegree);
         }
     }
-    void RotateChilds()
+    void RotateChilds(int rotationDegree)
     {
         GameObject[] shapes = GameObject.FindGameObjectsWithTag("Shape");
         foreach (GameObject shape in shapes)
         {
             foreach (Transform child in shape.transform)
             {
-                child.transform.Rotate(0, 0, 90);
+                child.transform.Rotate(0, 0, rotationDegree);
             }
         }
     } 
-    void RotateCounter()
-    {  
-        rotateCount = rotateCount + 90;
-        if(rotateCount == 360)
+    void RotateCounter(bool isCounter)
+    { 
+        if(isCounter)
         {
-            rotateCount = 0;
+            rotateCount = rotateCount + 90;
+            if(rotateCount == 360)
+            {
+                rotateCount = 0;
+            }
+            GameManager.instance.rotationRate = rotateCount;
         }
-        GameManager.instance.rotationRate = rotateCount;
+        
     }
-    
+    public void ResetRotateCount()
+    {
+        Rotate(GameManager.instance.rotationRate, false);
+        Debug.Log("ResetRotateCount");
+        GameManager.instance?.CheckGameOver();
+        doOnce = false;
+    }  
 }

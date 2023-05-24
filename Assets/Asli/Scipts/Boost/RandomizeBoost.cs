@@ -15,6 +15,7 @@ public class RandomizeBoost : MonoBehaviour
         DestroyShapeObjects();   
         randomizeShape.shapesList.Clear();
         randomizeShape.InstantiateShapePrefab(ShapeListCount());
+        //RotateAdjustments();
     }
    
     void DestroyShapeObjects()
@@ -29,4 +30,13 @@ public class RandomizeBoost : MonoBehaviour
     {
         return randomizeShape.shapeHolder.transform.childCount;
     }
+
+/*
+    void RotateAdjustments()
+    {
+        RotateBoost rotateBoost = GameObject.FindObjectOfType<RotateBoost>();
+        rotateBoost.ResetRotateCount();
+        rotateBoost.Rotate(90, true);
+    }
+*/
 }

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textMeshOutput;
     [SerializeField] GridScript gridScriptInScene;
     public int rotationRate = 0;
+    public int rotateCounter = -90;
     void Awake()
     {
         if (instance == null)
@@ -139,7 +140,7 @@ public class GameManager : MonoBehaviour
     private ShapeDataScript.Row[] RotateBoard90Degrees(ShapeDataScript.Row[] board)
     {
         int rowCount = board.Length;
-        int columnCount = board[0].columns.Length;
+        int columnCount = board[0].columns.Length;       
         ShapeDataScript.Row[] rotatedBoard = new ShapeDataScript.Row[columnCount];
 
         for (int i = 0; i < columnCount; i++)
@@ -152,7 +153,16 @@ public class GameManager : MonoBehaviour
             rotatedBoard[i] = new ShapeDataScript.Row(rotatedColumns.Length);
             rotatedBoard[i].columns = rotatedColumns;
         }
-
+        rotateCounterFunc();
         return rotatedBoard;
+    }
+
+    public void rotateCounterFunc()
+    {
+        rotateCounter = rotateCounter + 90;
+        if (rotateCounter == 360)
+        {
+            rotateCounter = 0;
+        }
     }
 }
