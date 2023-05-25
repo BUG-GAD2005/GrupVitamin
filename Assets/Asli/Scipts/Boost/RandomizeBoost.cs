@@ -5,32 +5,20 @@ using UnityEngine;
 public class RandomizeBoost : MonoBehaviour
 {
     RandomizeShape randomizeShape;
-    //public int rotateCount = 0;
 
     private void Start()
     {
         randomizeShape = GameObject.FindObjectOfType<RandomizeShape>();
-        //RotateAdjustments();
     }
     public void RandomizeShapesAgain()
     {
-
-        //CheckGameOverFromGameManager();
+        GameManager.instance.ResetShapesRotation();
         DestroyShapeObjects();   
         randomizeShape.shapesList.Clear();
         randomizeShape.InstantiateShapePrefab(ShapeListCount());
 
     }
-
-    void CheckGameOverFromGameManager()
-    {
-        GameManager.instance.rotateCounter = 0;
-        GameManager.instance.rotationRate = 0;
-        //GameManager.instance?.CheckGameOver();
-    }
-
-
-
+    
     void DestroyShapeObjects()
     {
         for (int i = 0; i < ShapeListCount(); i++)
@@ -38,20 +26,8 @@ public class RandomizeBoost : MonoBehaviour
             Destroy(randomizeShape.shapeHolder.transform.GetChild(i).gameObject);
         }
     }
-
     int ShapeListCount()
     {
         return randomizeShape.shapeHolder.transform.childCount;
     }
-
-    //public int RotateAdjustments()
-    //{
-    //    rotateCount++;
-    //    if (rotateCount == 5)
-    //    {
-    //        rotateCount = 0;
-    //    }
-    //    Debug.Log("Rotate Count: " + rotateCount);
-    //    return rotateCount;
-    //}
 }

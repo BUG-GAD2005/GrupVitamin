@@ -4,30 +4,21 @@ using UnityEngine;
 
 public class RotateBoost : MonoBehaviour
 {
-    //int rotateCount = GameManager.instance.rotationRate;
     public int rotateCount = 0;
-    int RotatedCount = 0;
 
     void Start()
     {
-        //rotateCount = GameManager.instance.rotationRate;
-       
+        rotateCount = 0;
     }
     public void ButtonRotate()
     {
         Rotate(90,true);
-        //RandomizeBoost randomizeBoost = GameObject.FindObjectOfType<RandomizeBoost>();
-        //randomizeBoost.rotateCount = 0;
-
     }
     public void Rotate(int rotationDegree, bool isCounter)
     {
         RotateCounter(true);       
         RotateParent(rotationDegree);
         RotateChilds(rotationDegree);
-        //GameManager.instance?.CheckGameOver();
-        Debug.Log("aaa");
-        ResetRotateCount();
     }
     void RotateParent(int RotationDegree)
     {
@@ -61,58 +52,4 @@ public class RotateBoost : MonoBehaviour
         }
         
     }
-    void ResetRotateCount()
-    {
-        //Rotate(GameManager.instance.rotationRate, false);
-        //Debug.Log("ResetRotateCount");
-
-        ////Rotate(90,true);
-        ////get RandomizeBoost's rotateCount
-        //RandomizeBoostFixer();
-        //GameManager.instance?.CheckGameOver();
-
-        //Rotate(-rotateCount, true);
-
-        //rotateCount = 0;
-
-        //if(rotateCount == 1)
-        //{
-        //    Rotate(270, true);
-        //}
-        //else if(rotateCount == 2)
-        //{
-        //    Rotate(180, true);
-        //}
-    }
-
-    //void RandomizeBoostFixer()
-    //{
-    //    RandomizeBoost randomizeBoost = GameObject.FindObjectOfType<RandomizeBoost>();
-    //    int randomizeBoostCount = randomizeBoost.RotateAdjustments();
-    //    if (randomizeBoostCount == 0)
-    //    {
-    //        Rotate(180, true);
-    //    }
-    //    else if (randomizeBoostCount == 1)
-    //    {
-    //        Rotate(0, true);
-    //    }
-    //    else if (randomizeBoostCount == 2)//1
-    //    {
-    //        Rotate(0, true);
-    //    }
-    //    else if (randomizeBoostCount == 3)
-    //    {
-    //        Rotate(180, true);
-    //    }
-    //}
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Pause))
-    //    {
-    //        Debug.Log("aaaaaa");
-    //        ResetRotateCount(); 
-    //    }
-    //}
-
 }

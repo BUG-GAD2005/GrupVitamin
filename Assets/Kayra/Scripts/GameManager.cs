@@ -164,4 +164,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetShapesRotation()
+    {
+        if (rotateCounter == 90)
+        {
+            rotateCounter += 270;
+        }
+        else if (rotateCounter == 180)
+        {
+            rotateCounter += 180;
+        }
+        else if (rotateCounter == 270)
+        {
+            rotateCounter += 90;
+        }
+
+        rotationRate = 0;
+    }
 }
