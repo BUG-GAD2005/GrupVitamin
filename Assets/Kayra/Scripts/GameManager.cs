@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
     void GameIsOver()
     {
-        //SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2);
     }
     // Rotate board function
     private ShapeDataScript.Row[] RotateBoard(ShapeDataScript.Row[] board, int rotateRate)
