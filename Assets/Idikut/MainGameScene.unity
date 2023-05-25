@@ -755,11 +755,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af0b6a435ef34e4897a7beaae8a6c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 9
-  rows: 9
+  columns: 10
+  rows: 10
   squareGap: -16
   gridSquare: {fileID: 614286376202406479, guid: 010462c6ac0bf9b45a30579b5188f64f, type: 3}
-  startPosition: {x: -400, y: 400}
+  startPosition: {x: -450, y: 400}
   squareScale: 1
   everySquareScale: 0
 --- !u!1 &1388958502
