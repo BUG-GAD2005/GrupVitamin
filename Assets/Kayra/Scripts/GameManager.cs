@@ -22,10 +22,6 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
     }
-    void Start()
-    {
-        
-    }
 
     public void CheckGameOverForButtons() => CheckGameOver();
     public bool CheckGameOver()
@@ -42,6 +38,7 @@ public class GameManager : MonoBehaviour
         if (textMeshOutput != null)
         {
             textMeshOutput.text = "";
+
             foreach (Shape shape in shapesInScene)
             {
                 ShapeDataScript.Row[] rotatedBoard = RotateBoard(shape.currentShapeData.board, rotationRate);
@@ -52,8 +49,9 @@ public class GameManager : MonoBehaviour
                         textMeshOutput.text += b ? "[]" : "x";
                     }
                     textMeshOutput.text += "<br>";
+                    
                 }
-                textMeshOutput.text += "<br>";
+                textMeshOutput.text += "<br>";               
             }
         }
 
@@ -165,4 +163,5 @@ public class GameManager : MonoBehaviour
             rotateCounter = 0;
         }
     }
+
 }

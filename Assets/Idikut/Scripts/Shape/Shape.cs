@@ -48,7 +48,7 @@ public class Shape : MonoBehaviour
 
         Destroy(gameObject);
 
-        GameManager.instance?.CheckGameOver();
+        //GameManager.instance?.CheckGameOver();
 
         return true;
     } 

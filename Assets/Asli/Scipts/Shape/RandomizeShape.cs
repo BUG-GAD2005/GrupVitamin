@@ -28,7 +28,7 @@ public class RandomizeShape : MonoBehaviour
         GetShapesOnScene();
         GetRandomShapeIndex(shapesList);
 
-        GameManager.instance?.CheckGameOver();
+        //GameManager.instance?.CheckGameOver();
     }
     
     void AddShapesToList()
@@ -77,11 +77,12 @@ public class RandomizeShape : MonoBehaviour
     IEnumerator ShapeSpawnerWithCheck()
     {
         yield return new WaitForSecondsRealtime(0.2f);
-
+        
         if (!IsThereAnyShape())
         {
             InstantiateShapePrefab(3);
         }
+        GameManager.instance?.CheckGameOver();
         StartCoroutine(ShapeSpawnerWithCheck());
     }
 }
