@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     public BoostManager boostManager;
     public int Score { get; private set; }
-    int HighScore;
+    public int HighScore { get; private set; }
 
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] TextMeshProUGUI HighScoreText;
@@ -54,15 +54,14 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", Score);
             UpdateHighScore();
         }
-        
     }
-
     void UpdateHighScore()
     {
-        HighScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (HighScoreText != null)
+        { HighScoreText.text = $"HighScore: {HighScore}"; }
     }
-
-
     public void ResetHighScore()
     {
         HighScore = 0;
