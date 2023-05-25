@@ -12,7 +12,7 @@ public class ShapeMovement : MonoBehaviour
     Vector3 touchedShapeDefaultPos;
     Touch touch;
 
-    public RandomizeShape randomizeShape;
+    public ShapeManager randomizeShape;
 
     void Update()
     {
@@ -55,14 +55,8 @@ public class ShapeMovement : MonoBehaviour
             touchedShapePos = touchedShape.transform.position;
             touchedShapeDefaultPos = touchedShapePos;
 
-            if (randomizeShape.isUsingRotateBoost)
-            {
-                randomizeShape.isUsingRotateBoost = false;
-                randomizeShape.canDestroyRotateBoost = true;
-            }
-        }
-
-          
+            CheckRotateBoostUsed();
+        }   
     }
 
     void DragShape()
@@ -91,4 +85,13 @@ public class ShapeMovement : MonoBehaviour
             }
         }
     } 
+
+    void CheckRotateBoostUsed()
+    {
+        if (randomizeShape.isUsingRotateBoost)
+        {
+            randomizeShape.isUsingRotateBoost = false;
+            randomizeShape.canDestroyRotateBoost = true;
+        }
+    }
 }

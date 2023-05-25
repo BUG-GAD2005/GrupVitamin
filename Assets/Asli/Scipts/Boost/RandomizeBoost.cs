@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class RandomizeBoost : MonoBehaviour
 {
-    RandomizeShape randomizeShape;
+    ShapeManager randomizeShape;
 
     private void Start()
     {
-        randomizeShape = GameObject.FindObjectOfType<RandomizeShape>();
+        randomizeShape = GameObject.FindObjectOfType<ShapeManager>();
     }
     public void RandomizeShapesAgain()
     {

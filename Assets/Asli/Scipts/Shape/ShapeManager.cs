@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class RandomizeShape : MonoBehaviour
+public class ShapeManager : MonoBehaviour
 {
     public List<ShapeDataScript> shapeDataScriptsList;
     public List<Shape> shapesList;
