@@ -17,7 +17,7 @@ public class RandomizeBoost : MonoBehaviour
         DestroyShapeObjects();   
         randomizeShape.shapesList.Clear();
         randomizeShape.InstantiateShapePrefab(ShapeListCount());
-        
+        GameManager.instance?.CheckGameOver();
     }
    
     void DestroyShapeObjects()

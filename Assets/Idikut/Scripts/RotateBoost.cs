@@ -13,7 +13,7 @@ public class RotateBoost : MonoBehaviour
         //rotateCount = GameManager.instance.rotationRate;
        
     }
-    public void buttonRotate()
+    public void ButtonRotate()
     {
         Rotate(90,true);
         RandomizeBoost randomizeBoost = GameObject.FindObjectOfType<RandomizeBoost>();
@@ -68,7 +68,6 @@ public class RotateBoost : MonoBehaviour
         //get RandomizeBoost's rotateCount
         RandomizeBoostFixer();
         GameManager.instance?.CheckGameOver();
-
     }
 
     void RandomizeBoostFixer()

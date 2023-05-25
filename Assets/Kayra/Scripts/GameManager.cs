@@ -153,11 +153,11 @@ public class GameManager : MonoBehaviour
             rotatedBoard[i] = new ShapeDataScript.Row(rotatedColumns.Length);
             rotatedBoard[i].columns = rotatedColumns;
         }
-        rotateCounterFunc();
+        RotateCounterFunc();
         return rotatedBoard;
     }
 
-    public void rotateCounterFunc()
+    public void RotateCounterFunc()
     {
         rotateCounter = rotateCounter + 90;
         if (rotateCounter == 360)

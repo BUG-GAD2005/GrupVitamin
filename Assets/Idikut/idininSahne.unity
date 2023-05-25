@@ -1996,7 +1996,7 @@ PrefabInstance:
       objectReference: {fileID: 1031562484}
     - target: {fileID: 5486879567609827839, guid: ee104e4c2cb692642bfe2e70bb13f9ad, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: buttonRotate
+      value: ButtonRotate
       objectReference: {fileID: 0}
     - target: {fileID: 7036066403526870835, guid: ee104e4c2cb692642bfe2e70bb13f9ad, type: 3}
       propertyPath: m_Name
