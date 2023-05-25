@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Idikut/MainGameScene.unity
     guid: a31d1315db6b139498670d7db18e5417
+  - enabled: 1
+    path: Assets/Utku/GameOverScreen.unity
+    guid: 03f3c15c2e39da841b9c6143e7d1b64c
   m_configObjects: {}
