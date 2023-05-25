@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
         {
             Destroy(this);
         }
-
+        
         RefreshScoreText();
         UpdateHighScore();
     }
