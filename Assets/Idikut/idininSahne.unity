@@ -1257,6 +1257,7 @@ MonoBehaviour:
   textMeshOutput: {fileID: 1732962486}
   gridScriptInScene: {fileID: 1108940752}
   rotationRate: 0
+  rotateCounter: 0
 --- !u!1 &1677194912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +1990,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5486879567609827839, guid: ee104e4c2cb692642bfe2e70bb13f9ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1031562484}
+    - target: {fileID: 5486879567609827839, guid: ee104e4c2cb692642bfe2e70bb13f9ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buttonRotate
+      objectReference: {fileID: 0}
     - target: {fileID: 7036066403526870835, guid: ee104e4c2cb692642bfe2e70bb13f9ad, type: 3}
       propertyPath: m_Name
       value: Rotate Boost
@@ -2011,7 +2020,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1964484222}
+    - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1964484222}
     - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
@@ -2019,11 +2036,23 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ResetRotateCount
       objectReference: {fileID: 0}
     - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RotateBoost, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: RotateBoost, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
@@ -2032,6 +2061,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178396089295221098, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2573584336405751477, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}

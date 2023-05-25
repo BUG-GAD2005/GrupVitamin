@@ -6,7 +6,7 @@ public class RotateBoost : MonoBehaviour
 {
     //int rotateCount = GameManager.instance.rotationRate;
     public int rotateCount = 0;
-    bool doOnce = true;
+    int RotatedCount = 0;
 
     void Start()
     {
@@ -16,6 +16,9 @@ public class RotateBoost : MonoBehaviour
     public void buttonRotate()
     {
         Rotate(90,true);
+        RandomizeBoost randomizeBoost = GameObject.FindObjectOfType<RandomizeBoost>();
+        randomizeBoost.rotateCount = 0;
+
     }
     public void Rotate(int rotationDegree, bool isCounter)
     {
@@ -60,7 +63,34 @@ public class RotateBoost : MonoBehaviour
     {
         Rotate(GameManager.instance.rotationRate, false);
         Debug.Log("ResetRotateCount");
+        
+        //Rotate(90,true);
+        //get RandomizeBoost's rotateCount
+        RandomizeBoostFixer();
         GameManager.instance?.CheckGameOver();
-        doOnce = false;
-    }  
+
+    }
+
+    void RandomizeBoostFixer()
+    {
+        RandomizeBoost randomizeBoost = GameObject.FindObjectOfType<RandomizeBoost>();
+        int randomizeBoostCount = randomizeBoost.RotateAdjustments();
+        if(randomizeBoostCount == 0)
+        {
+            Rotate(180,true);
+        }
+        else if(randomizeBoostCount == 1)
+        {
+            Rotate(0,true);
+        }
+        else if(randomizeBoostCount == 2)//1
+        {
+            Rotate(0,true);
+        }
+        else if(randomizeBoostCount == 3)
+        {
+            Rotate(180,true);
+        }
+    }
+
 }

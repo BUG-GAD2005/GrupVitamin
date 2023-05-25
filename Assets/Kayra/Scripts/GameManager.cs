@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textMeshOutput;
     [SerializeField] GridScript gridScriptInScene;
     public int rotationRate = 0;
-    public int rotateCounter = -90;
+    public int rotateCounter = 0;
     void Awake()
     {
         if (instance == null)
