@@ -12,6 +12,8 @@ public class ShapeMovement : MonoBehaviour
     Vector3 touchedShapeDefaultPos;
     Touch touch;
 
+    public RandomizeShape randomizeShape;
+
     void Update()
     {
         PlayerController();
@@ -37,8 +39,6 @@ public class ShapeMovement : MonoBehaviour
             {
                 DropShape();
             }
-
-            
         }
     }
 
@@ -54,7 +54,15 @@ public class ShapeMovement : MonoBehaviour
             touchedShape = hit.collider.gameObject;
             touchedShapePos = touchedShape.transform.position;
             touchedShapeDefaultPos = touchedShapePos;
+
+            if (randomizeShape.isUsingRotateBoost)
+            {
+                randomizeShape.isUsingRotateBoost = false;
+                randomizeShape.canDestroyRotateBoost = true;
+            }
         }
+
+          
     }
 
     void DragShape()
@@ -82,7 +90,5 @@ public class ShapeMovement : MonoBehaviour
                 touchedShape.transform.position = touchedShapeDefaultPos;
             }
         }
-    }
-
-    
+    } 
 }

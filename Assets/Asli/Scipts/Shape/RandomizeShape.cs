@@ -12,6 +12,8 @@ public class RandomizeShape : MonoBehaviour
     public GameObject shapeHolder;
     public GameObject shapePrefab;
 
+    public bool isUsingRotateBoost = false;
+    public bool canDestroyRotateBoost = false;
     private void Start()
     {
         shapeHolder = GameObject.Find("Shape Holder");
@@ -81,7 +83,11 @@ public class RandomizeShape : MonoBehaviour
             InstantiateShapePrefab(3);
             GameManager.instance.ResetShapesRotation();
         }
-        GameManager.instance?.CheckGameOver();
+
+            GameManager.instance?.CheckGameOver();
+        if(!isUsingRotateBoost)
+        {
+        }
         StartCoroutine(ShapeSpawnerWithCheck());
     }
 }

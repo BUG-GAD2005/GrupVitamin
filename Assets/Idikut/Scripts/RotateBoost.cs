@@ -5,13 +5,25 @@ using UnityEngine;
 public class RotateBoost : MonoBehaviour
 {
     public int rotateCount = 0;
+    RandomizeShape randomizeShape;
 
     void Start()
     {
+        randomizeShape = FindAnyObjectByType<RandomizeShape>();
         rotateCount = 0;
+    }
+    private void FixedUpdate()
+    {
+        if (randomizeShape.canDestroyRotateBoost)
+        {
+            Debug.Log("yok et");
+            randomizeShape.canDestroyRotateBoost = false;
+            
+        }
     }
     public void ButtonRotate()
     {
+        //randomizeShape.isUsingRotateBoost = true;
         Rotate(90,true);
     }
     public void Rotate(int rotationDegree, bool isCounter)
