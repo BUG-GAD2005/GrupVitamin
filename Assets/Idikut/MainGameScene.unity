@@ -837,10 +837,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 724249380}
-  enoughScore: 5
+  enoughScore: 2
   boostPrefabs:
   - {fileID: 2573584336405751477, guid: d6bf9c765a6126543a4a6a017295b962, type: 3}
   - {fileID: 7036066403526870835, guid: ee104e4c2cb692642bfe2e70bb13f9ad, type: 3}
+  - {fileID: 7036066403526870835, guid: d040efd1ba0abd246b58f4a9ecd4629f, type: 3}
   boostHolder: {fileID: 644203830}
 --- !u!1 &1108940750
 GameObject:
