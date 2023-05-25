@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,25 +36,25 @@ public class GameManager : MonoBehaviour
         }
 
         // Debug the rows
-        if (textMeshOutput != null)
-        {
-            textMeshOutput.text = "";
+        //if (textMeshOutput != null)
+        //{
+        //    textMeshOutput.text = "";
 
-            foreach (Shape shape in shapesInScene)
-            {
-                ShapeDataScript.Row[] rotatedBoard = RotateBoard(shape.currentShapeData.board, rotationRate);
-                foreach (ShapeDataScript.Row r in rotatedBoard)
-                {
-                    foreach (bool b in r.columns)
-                    {
-                        textMeshOutput.text += b ? "[]" : "x";
-                    }
-                    textMeshOutput.text += "<br>";
+        //    foreach (Shape shape in shapesInScene)
+        //    {
+        //        ShapeDataScript.Row[] rotatedBoard = RotateBoard(shape.currentShapeData.board, rotationRate);
+        //        foreach (ShapeDataScript.Row r in rotatedBoard)
+        //        {
+        //            foreach (bool b in r.columns)
+        //            {
+        //                textMeshOutput.text += b ? "[]" : "x";
+        //            }
+        //            textMeshOutput.text += "<br>";
                     
-                }
-                textMeshOutput.text += "<br>";               
-            }
-        }
+        //        }
+        //        textMeshOutput.text += "<br>";               
+        //    }
+        //}
 
         // For every shape in the scene
         foreach (Shape shape in shapesInScene)
@@ -118,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
     void GameIsOver()
     {
-            textMeshOutput.text = "GAME OVER";
+        SceneManager.LoadScene(2);
     }
     // Rotate board function
     private ShapeDataScript.Row[] RotateBoard(ShapeDataScript.Row[] board, int rotateRate)

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TryAgainMenuButton : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public void StartNewgGame()
     {
         SceneManager.LoadScene(1);

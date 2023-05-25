@@ -10,15 +10,7 @@ public class SettingPopUps : MonoBehaviour
         settingPopUp.SetActive(false);
     }
 
-    private void OnEnable()
-    {
-
-    }
-
-    private void OnDisable()
-    {
-
-    }
+    
 
 
 
